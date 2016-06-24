@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">DevIntensive</string>
+    <string name="app_name">Иван Купцов</string>
+    <string name="hint_mobile_number">Мобильный</string>
+    <string name="hint_email">Электронная почта</string>
+    <string name="hint_vk_profile">Профиль в VK</string>
+    <string name="hint_github_reposit">Репозиторий</string>
+    <string name="hint_about_me">О себе</string>
+    <string name="rate">Pейтинг</string>
+    <string name="code_strings">Написано строк кода</string>
+    <string name="projects">Проектов</string>
+    <string name="count_rate">5</string>
+    <string name="count_code_strings">5</string>
+    <string name="count_projects">5</string>
 </resources>
