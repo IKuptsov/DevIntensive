@@ -23,6 +23,9 @@
     <!--List sizes-->
     <dimen name="size_small_24">24dp</dimen>
     <dimen name="size_medium_32">32dp</dimen>
+    <dimen name="size_medium_56">56dp</dimen>
     <dimen name="size_list_item_72">72dp</dimen>
     <dimen name="line_size">2dp</dimen>
+    <dimen name="profile_image_size">256dp</dimen>
+    <dimen name="fab_margin_right">8dp</dimen>
 </resources>
