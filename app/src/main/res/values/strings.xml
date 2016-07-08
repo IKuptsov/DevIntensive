@@ -2,6 +2,7 @@
     <string name="app_name">Иван Купцов</string>
     <string name="hint_mobile_number">Мобильный</string>
     <string name="hint_email">Электронная почта</string>
+    <string name="login_hint_email">Email</string>
     <string name="hint_vk_profile">Профиль в VK</string>
     <string name="hint_github_reposit">Репозиторий</string>
     <string name="hint_about_me">О себе</string>
@@ -12,4 +13,30 @@
     <string name="count_code_strings">5</string>
     <string name="count_projects">5</string>
     <string name="email">ikuptsovv@gmail.com</string>
+    <string name="user_profile_placeholder_image">Изменить фотографию профиля</string>
+    <string name="user_profile_dialog_gallery">Загрузить из галлереи</string>
+    <string name="user_profile_dialog_camera">Сделать снимок</string>
+    <string name="user_profile_dialog_cancel">Отмена</string>
+    <string name="user_profile_dialog_title">Изменить фотографию Профиля</string>
+    <string name="user_profile_choose_message">выберите фото</string>
+    <string name="login_title">ВОЙТИ</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="hint_password">Пароль</string>
+    <string name="login_button_enter_text">Войти</string>
+    <string name="err_msg_name">Введите коректный номер телефона</string>
+
+
 </resources>
