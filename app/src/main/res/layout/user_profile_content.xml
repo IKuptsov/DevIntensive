@@ -66,6 +66,7 @@
             android:paddingLeft="@dimen/spacing_normal_16">
 
             <TextView
+                android:id="@+id/count_projects"
                 style="@style/statistic_up_block"
                 android:text="@string/count_projects"/>
 
