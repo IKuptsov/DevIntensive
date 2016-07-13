@@ -5,8 +5,9 @@
     <!-- font sizes -->
     <dimen name="font_larger">22sp</dimen>
     <dimen name="font_large">18sp</dimen>
+    <dimen name="font_medium_20">20sp</dimen>
     <dimen name="font_normal">15sp</dimen>
-    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_small_14">14sp</dimen>
 
     <!-- typical spacing between two views -->
     <dimen name="spacing_huge_72">72dp</dimen>

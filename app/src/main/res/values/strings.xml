@@ -1,4 +1,8 @@
 <resources>
+    <!-- Font family -->
+    <string name="ff_regular">sans-serif</string>
+    <string name="ff_medium">sans-serif-medium</string>
+
     <string name="app_name">Иван Купцов</string>
     <string name="hint_mobile_number">Мобильный</string>
     <string name="hint_email">Электронная почта</string>
@@ -19,7 +23,7 @@
     <string name="user_profile_dialog_cancel">Отмена</string>
     <string name="user_profile_dialog_title">Изменить фотографию Профиля</string>
     <string name="user_profile_choose_message">выберите фото</string>
-    <string name="login_title">ВОЙТИ</string>
+
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -34,9 +38,14 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <!--Auth activity-->
+    <string name="auth.autorization.enter">ВОЙТИ</string>
+    <string name="auth.email">Введите e-mail</string>
+    <string name="auth.password">Введите пароль</string>
+    <string name="auth.login">Войти</string>
+    <string name="auth.remember">Забыли пароль?</string>
     <string name="hint_password">Пароль</string>
-    <string name="login_button_enter_text">Войти</string>
-    <string name="err_msg_name">Введите коректный номер телефона</string>
+    <string name="err_msg_name">Введите корректный номер телефона</string>
 
 
 </resources>
