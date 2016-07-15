@@ -20,7 +20,7 @@ public interface ConstantManager {
     String USER_MAIL_KEY1 ="USER_MAIL_KEY1" ;
     String AUTH_TOKEN_KEY ="AUTH_TOKEN_KEY" ;
     String USER_ID_KEY ="USER_ID_KEY" ;
-
+    String PARCELABLE_KEY="PARCELABLE_KEY";
 
     int LOAD_PROFILE_MANAGER=1;
     int LOAD_PROFILE_PHOTO=1;

@@ -115,13 +115,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         init();
         setupToolBar();
         setupDrawer();
-
         initUserFields();
         initUserHeaderValue();
 
-        setRoundedAvatar();
-
-
+        setRoundedAvatar(R.id.user_avatar);
 
         if (NetworkStatusChecker.isNetworkAvaliable(this)) {
             initUserFieldsValue();
@@ -132,15 +129,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Picasso.with(this)
                 .load(mDataManager.getPreferencesManager().loadUserPhoto())
-                .placeholder(R.drawable.user_foto)// TODO:placeholder+transform+crop 
+                .placeholder(R.drawable.user_foto)
                 .into(mProfileImage);
 
         Picasso.with(this)
                 .load(mDataManager.getPreferencesManager().loadUserAvatar())
                 .placeholder(R.drawable.user_avatar)
                 .into(mUserAvatar);
-
-
 
         if (savedInstanceState == null) {
             //активность запускается в первый  раз
@@ -639,7 +634,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void insertProfileImage(Uri selectedImage) {
         Picasso.with(this)
-                .load(selectedImage)// TODO:placeholder+transform+crop
+                .load(selectedImage)
                 .into(mProfileImage);
         mDataManager.getPreferencesManager().saveUserPhoto(selectedImage);
     }
@@ -653,8 +648,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-public void setRoundedAvatar(){
-    Bitmap bitmap= BitmapFactory.decodeResource(this.getResources(),R.drawable.user_avatar);
+public void setRoundedAvatar(int avatar){
+    Bitmap bitmap= BitmapFactory.decodeResource(this.getResources(),avatar);
     RoundedDrawable roundedDrawable=new RoundedDrawable(bitmap);
     mUserAvatar.setImageDrawable(roundedDrawable);
 }

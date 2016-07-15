@@ -6,6 +6,7 @@ import com.softdesign.devintensive.data.network.RestService;
 import com.softdesign.devintensive.data.network.ServiceGenerator;
 import com.softdesign.devintensive.data.network.req.UserLoginReq;
 import com.softdesign.devintensive.data.network.res.UploadPhotoRes;
+import com.softdesign.devintensive.data.network.res.UserListRes;
 import com.softdesign.devintensive.data.network.res.UserModelRes;
 import com.softdesign.devintensive.utils.DevIntensiveApplication;
 
@@ -44,6 +45,11 @@ public class DataManager {
     }
    /* @POST
     public Call<UploadPhotoRes>*/
+   @GET
+   public Call<UserListRes> getUserList() {
+       return mRestService.getUserList();
+   }
+
     //EndRegion
 
     //Region---------------DATA

@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!-- font sizes -->
     <dimen name="font_larger">22sp</dimen>
+    <dimen name="font_large_24">24sp</dimen>
     <dimen name="font_large">18sp</dimen>
     <dimen name="font_medium_20">20sp</dimen>
     <dimen name="font_normal">15sp</dimen>
@@ -24,6 +25,7 @@
     <dimen name="button_height_short">32dp</dimen>
     <!--List sizes-->
     <dimen name="size_small_24">24dp</dimen>
+    <dimen name="size_big_72">72dp</dimen>
     <dimen name="size_medium_32">32dp</dimen>
     <dimen name="size_medium_56">56dp</dimen>
     <dimen name="size_list_item_72">72dp</dimen>
