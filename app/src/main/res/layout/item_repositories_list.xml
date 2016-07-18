@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="72dp">
+    <TextView
+        android:id="@+id/hint_repositories_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/spacing_huge_72"
+        android:layout_centerVertical="true"
+        android:text="Репозиторий"/>
+    <TextView
+        android:id="@+id/github_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hint_repositories_text"
+        android:layout_marginRight="@dimen/spacing_huge_72"
+        android:layout_centerVertical="true"
+        android:text="@string/dummy"/>
+    <ImageView
+        style="@style/icon.right"
+        android:id="@+id/show_github"
+        android:src="@drawable/eye"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

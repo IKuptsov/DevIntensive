@@ -67,10 +67,6 @@
                             android:layout_marginBottom="@dimen/size_medium_56"/>
                     </RelativeLayout>
 
-
-
-
-
                 </FrameLayout>
 
                 <android.support.v7.widget.Toolbar

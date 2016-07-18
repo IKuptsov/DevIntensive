@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 
+
 public class RoundedDrawable extends Drawable {
     private final Bitmap mBitmap;
     private final Paint mPaint;

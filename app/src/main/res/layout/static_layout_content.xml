@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<app:android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!--Statistic block-->
+        <LinearLayout
+            android:id="@+id/user_info_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="113dp"
+            android:background="@color/grey"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_normal_16"
+            app:layout_anchor="@id/appbar_layout"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:id="@+id/statistic_block"
+                style="@style/statistic_block"
+                android:layout_weight="0.25"
+                android:paddingRight="@dimen/spacing_normal_16">
+
+                <TextView
+                    android:id="@+id/count_rate"
+                    style="@style/statistic_up_block"
+                    android:text="@string/count_rate"/>
+
+                <TextView
+                    style="@style/statistic_down_block"
+                    android:text="@string/rate"/>
+            </LinearLayout>
+
+            <View style="@style/view_border"/>
+
+            <LinearLayout
+                style="@style/statistic_block"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/count_code_strings"
+                    style="@style/statistic_up_block"
+                    android:text="@string/count_code_strings"/>
+
+                <TextView
+                    style="@style/statistic_down_block"
+                    android:text="@string/code_strings"/>
+            </LinearLayout>
+
+            <View
+                style="@style/view_border"/>
+
+            <LinearLayout
+                style="@style/statistic_block"
+                android:layout_weight="0.25"
+                android:paddingLeft="@dimen/spacing_normal_16">
+
+                <TextView
+                    android:id="@+id/count_projects"
+                    style="@style/statistic_up_block"
+                    android:text="@string/count_projects"/>
+
+                <TextView
+                    style="@style/statistic_down_block"
+                    android:text="@string/projects"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <!--End grey block-->
+
+        <!--Start list items-->
+
+        <LinearLayout style="@style/list_item">
+
+            <ImageView
+                style="@style/icon.left"
+                android:src="@drawable/github_circle"/>
+
+            <LinearLayout
+                style="@style/list_central_item">
+
+                <ListView
+                    android:id="@+id/repositories_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_medium_32">
+
+                </ListView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View style="@style/view_divider"/>
+
+        <LinearLayout style="@style/list_item">
+
+            <ImageView
+                style="@style/icon.left"
+                android:src="@drawable/ic_account_circle_black_24dp"/>
+
+            <RelativeLayout
+                style="@style/list_central_item"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/hint_bio_text_static"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="О себе"/>
+
+                <TextView
+                    android:id="@+id/bio"
+                    style="@style/item_text"
+                    android:layout_below="@id/hint_bio_text_static"
+                    android:text="@string/dummy"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <!-- End list items-->
+    </LinearLayout>
+
+</app:android.support.v4.widget.NestedScrollView>
