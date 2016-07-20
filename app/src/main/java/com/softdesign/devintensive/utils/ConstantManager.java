@@ -21,6 +21,7 @@ public interface ConstantManager {
     String AUTH_TOKEN_KEY ="AUTH_TOKEN_KEY" ;
     String USER_ID_KEY ="USER_ID_KEY" ;
     String PARCELABLE_KEY="PARCELABLE_KEY";
+    String USER_LOGIN_KEY ="USER_LOGIN_KEY" ;
 
     int LOAD_PROFILE_MANAGER=1;
     int LOAD_PROFILE_PHOTO=1;
@@ -32,5 +33,5 @@ public interface ConstantManager {
     int CAMERA_REQUEST_PERMISSION_CODE=102;
 
 
-
+    int SEARCH_DELAY =500 ;
 }
