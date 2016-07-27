@@ -17,10 +17,12 @@ import retrofit2.http.Path;
 public interface RestService {
      @POST("login")
      Call<UserModelRes> loginUser(@Body UserLoginReq req);
+
 @Multipart
      @POST("user/{useriId}/publicValues/profilePhoto")
      Call<UploadPhotoRes>uploadPhoto(@Path("userId")String userId,
                                      @Part MultipartBody.Part file);
+
      @GET("user/list?orderBy=rating")
      Call<UserListRes> getUserList();
 }

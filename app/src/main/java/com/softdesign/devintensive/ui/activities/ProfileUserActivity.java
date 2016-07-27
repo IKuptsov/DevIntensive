@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -20,11 +21,14 @@ import com.softdesign.devintensive.data.managers.DataManager;
 import com.softdesign.devintensive.data.storage.models.UserDTO;
 import com.softdesign.devintensive.ui.adapters.RepositoriesAdapter;
 import com.softdesign.devintensive.utils.ConstantManager;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProfileUserActivity extends AppCompatActivity {
+    private static final String TAG = ConstantManager.TAG_PREFIX + "ProfileUserActivity";
     private Toolbar mToolbar;
     private TextView mRating, mCodeLines, mProjects, mUserBio;
     private ImageView mProfileImage;
@@ -71,7 +75,7 @@ public class ProfileUserActivity extends AppCompatActivity {
                 Intent githubIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www."
                         + userDTO.getRepositories().get(position)));
                 startActivity(githubIntent);
-        }
+            }
         });
         mRating.setText(userDTO.getRating());
         mCodeLines.setText(userDTO.getCodeLines());
@@ -79,11 +83,40 @@ public class ProfileUserActivity extends AppCompatActivity {
         mUserBio.setText(userDTO.getBio());
         mCollapsingToolbarLayout.setTitle(userDTO.getFullname());
 
-        Picasso.with(this)
+        DataManager.getINSTANCE().getPicasso()
                 .load(userDTO.getPhoto())
-                .placeholder(R.drawable.user_bg)
                 .error(R.drawable.user_bg)
-                .into(mProfileImage);
+                .placeholder(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(mProfileImage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "load from cache");
+                    }
+
+                    @Override
+                    public void onError() {
+                        DataManager.getINSTANCE().getPicasso()
+                                .load(userDTO.getPhoto())
+                                .error(R.drawable.user_bg)
+                                .placeholder(R.drawable.user_bg)
+                                .fit()
+                                .centerCrop()
+                                .into(mProfileImage, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        Log.d(TAG, "Грузит фотку с инета, черт");
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                        Log.d(TAG, "could't fetch image");
+                                    }
+                                });
+                    }
+                });
 
     }
 }

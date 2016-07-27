@@ -7,13 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
@@ -45,9 +39,10 @@ import android.widget.TextView;
 
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.data.managers.DataManager;
+import com.softdesign.devintensive.utils.CircleTransform;
 import com.softdesign.devintensive.utils.ConstantManager;
 import com.softdesign.devintensive.utils.NetworkStatusChecker;
-import com.softdesign.devintensive.utils.RoundedDrawable;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -92,7 +87,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private NavigationView mNavigationView;
 
 
-
     /**
      * +     * Метод вызывается при создании активити после изменения конфигурации/возврата к текушей
      * +     * активити после его уничтожения.
@@ -118,8 +112,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initUserFields();
         initUserHeaderValue();
 
-        setRoundedAvatar(R.id.user_avatar);
-
         if (NetworkStatusChecker.isNetworkAvaliable(this)) {
             initUserFieldsValue();
         } else {
@@ -130,11 +122,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Picasso.with(this)
                 .load(mDataManager.getPreferencesManager().loadUserPhoto())
                 .placeholder(R.drawable.user_foto)
+                .fit()
+                .centerCrop()
+                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(mProfileImage);
 
         Picasso.with(this)
                 .load(mDataManager.getPreferencesManager().loadUserAvatar())
+                .transform(new CircleTransform())
                 .placeholder(R.drawable.user_avatar)
+                .fit()
+                .centerCrop()
+                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(mUserAvatar);
 
         if (savedInstanceState == null) {
@@ -172,45 +171,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserVk = (EditText) findViewById(R.id.vk_profile);
         mUserGit = (EditText) findViewById(R.id.github_reposit);
         mUserBio = (EditText) findViewById(R.id.bio);
-
         mProfilePlaceholder = (RelativeLayout) findViewById(R.id.profile_placeholder);
         mProfilePlaceholder.setOnClickListener(this);
-
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
         mProfileImage = (ImageView) findViewById(R.id.user_foto_img);
-
         mUserInfoViews = new ArrayList<>();
         mUserInfoViews.add(mUserPhone);
         mUserInfoViews.add(mUserEmail);
         mUserInfoViews.add(mUserVk);
         mUserInfoViews.add(mUserGit);
         mUserInfoViews.add(mUserBio);
-
         mUserValueRating = (TextView) findViewById(R.id.count_rate);
         mUserValueCodeLines = (TextView) findViewById(R.id.count_code_strings);
         mUserValueProject = (TextView) findViewById(R.id.count_projects);
-
         mUserHeaderValue = new ArrayList<>();
         mUserHeaderValue.add(mUserFirstName);
         mUserHeaderValue.add(mUserSecondName);
         mUserHeaderValue.add(mUserHeaderEmail);
-
         mUserValueViews = new ArrayList<>();
         mUserValueViews.add(mUserValueRating);
         mUserValueViews.add(mUserValueCodeLines);
         mUserValueViews.add(mUserValueProject);
-
-
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mHeaderLayout = (View) mNavigationView.getHeaderView(0);
         mUserFullname = (TextView) mHeaderLayout.findViewById(R.id.user_name_txt);
         mUserHeaderEmail = (TextView) mHeaderLayout.findViewById(R.id.user_email_txt);
-        mUserAvatar=(ImageView)mHeaderLayout.findViewById(R.id.user_avatar);
-
-
-
+        mUserAvatar = (ImageView) mHeaderLayout.findViewById(R.id.user_avatar);
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
@@ -342,6 +331,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Log.d(TAG, "case R.id.mobile_number");
 
                 break;
+
         }
 
     }
@@ -353,7 +343,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void run() {
                 hideProgress();
             }
-        }, 5000);
+        }, 3000);
     }
 
     private void showSnackBar(String message) {
@@ -372,21 +362,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    /*Side Draver setuo*/
+    /*Side Draver setup*/
     private void setupDrawer() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener
-                (new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        showSnackBar(item.getTitle().toString());
-                        item.setChecked(true);
-                        mNavigationDrawer.closeDrawer(GravityCompat.START);
-                        return false;
-                    }
-                });
+        final  Intent usersList=new Intent(this,UserListActivity.class);
 
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener
+                    (new NavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(MenuItem item) {
+                            item.setChecked(true);
+
+                            switch (item.getItemId()) {
+                                case R.id.user_profile_menu:
+                                    showSnackBar(item.getTitle().toString());
+                                    onBackPressed();
+                                    break;
+                                case R.id.user_team_menu:
+                                    showSnackBar(item.getTitle().toString());
+                                    startActivity(usersList);
+                                    break;
+                            }
+                            mNavigationDrawer.closeDrawer(GravityCompat.START);
+                            return false;
+                        }
+
+                    });
+        }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -485,7 +490,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserFullname.setText(fullName);
         mUserHeaderEmail.setText(userData.get(2));
     }
-
 
 
     /**
@@ -647,12 +651,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-
-public void setRoundedAvatar(int avatar){
-    Bitmap bitmap= BitmapFactory.decodeResource(this.getResources(),avatar);
-    RoundedDrawable roundedDrawable=new RoundedDrawable(bitmap);
-    mUserAvatar.setImageDrawable(roundedDrawable);
-}
 
 }
 

@@ -114,6 +114,9 @@ public class UserModelRes {
             return git;
         }
 
+        public String getId() {
+            return id;
+        }
     }
     public class PublicInfo {
 

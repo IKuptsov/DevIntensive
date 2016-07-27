@@ -3,6 +3,7 @@ package com.softdesign.devintensive.data.managers;
 
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.text.Editable;
 
 import com.softdesign.devintensive.utils.ConstantManager;
 import com.softdesign.devintensive.utils.DevIntensiveApplication;
@@ -152,4 +153,13 @@ public class PreferencesManager {
     }
 
 
+    public void saveUserLogin(Editable text) {
+        SharedPreferences.Editor editor=mSharedPreferences.edit();
+        editor.putString(ConstantManager.USER_LOGIN_KEY, text.toString());
+        editor.apply();
+
+    }
+    public String getUserLogin(){
+        return mSharedPreferences.getString(ConstantManager.USER_LOGIN_KEY,"");
+    }
 }
